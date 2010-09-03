@@ -35,11 +35,24 @@ class Database extends Database_Settings {
   }
   
   public function query($query, $parameters) {
-    foreach($parameters as $param) {
+    $data_types = "";
+    foreach($parameters as $param)
+      $data_types .= $this->var_to_mysqli_type($param);
       
-    }
+    return $data_types;
+  }
+  
+  private function var_to_mysqli_type($var) {
+    if(is_int($var))
+      return 'i';
+    elseif(is_float($var))
+      return 'd';
+    else
+      return 's';
   }
   
 }
 
 $db = new Database();
+
+print $db->query("SELECT id FROM users WHERE name = ? AND password = ?", array("Arne", "Weise", 123));
