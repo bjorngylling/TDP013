@@ -1,0 +1,4 @@
+AuthUserFile C:/.htpwdfile
+AuthType Basic
+AuthName "Password protect"
+Require valid-user

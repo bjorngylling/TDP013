@@ -1,0 +1,14 @@
+RewriteEngine on
+RewriteBase   /tdp013/lab3/user_agent/
+
+# Avoid infinite loops
+RewriteCond %{ENV:REDIRECT_STATUS} 200
+RewriteRule .* - [L]
+
+# Firefox
+RewriteCond %{HTTP_USER_AGENT}  ^.*Firefox.*
+RewriteRule ^(.*)\.html$        $1-firefox.html [L]
+
+# Internet Explorer
+RewriteCond %{HTTP_USER_AGENT}  ^.*MSIE.*
+RewriteRule ^(.*)\.html$        $1-ie.html [L]

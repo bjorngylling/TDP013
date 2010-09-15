@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase   /tdp013/lab3/html_to_php/
+
+# All html -> php
+RewriteRule ^(.*)\.html$ $1\.php 
