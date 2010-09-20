@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/simpletest/autorun.php');
-require_once(str_replace('//','/',dirname(__FILE__).'/') .'../classes/database.php');
+require_once(str_replace('//','/',dirname(__FILE__).'/') .'../includes/classes/database.php');
 
 class TestDatabase extends UnitTestCase {
   function test_simple_query() {

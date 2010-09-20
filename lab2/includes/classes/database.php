@@ -68,6 +68,10 @@ class Database {
     
     $result = $this->query_results_to_array($statement);
     
+    if($this->config->debug) {
+      $this->print_query($query, $parameters, $result);
+    }
+    
     $statement->close();
     
     return($result);
@@ -122,6 +126,16 @@ class Database {
     $statement->free_result();
     
     return $results;
+  }
+  
+  private function print_query($query, $parameters, $result) {
+    for ($i = 0; $i < count($parameters); $i++) {
+      $query = preg_replace('/\?/', "`".$parameters[$i]."`", $query, 1);
+    }
+
+    echo "Result for query \"$query\" <br />";
+    print_r($result);
+    echo "<br /><br />";
   }
   
 }
