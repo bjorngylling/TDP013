@@ -1,3 +1,6 @@
 RewriteEngine on
-RewriteBase   /tdp013/lab3/seo_urls/
 
+RewriteBase /tdp013/lab3/seo_urls/
+
+RewriteCond %{QUERY_STRING} (.+)=(.+)
+RewriteRule ^$ %1/%2?
