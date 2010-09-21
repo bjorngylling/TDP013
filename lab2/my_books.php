@@ -1,13 +1,17 @@
 <?php
-  require('includes/bootstrap.php');
+  include('includes/bootstrap.php');
+  
+  allow_only_users();
+  
+  $user_id = $_SESSION['user_id'];
 
-  $title = "";
+  $title = "Listing your books";
   include("includes/top.php");
 ?>
 
 <div class="book_list">
 <?php 
-$book_list = Book::list_all();
+$book_list = Book::list_all($user_id);
 if($book_list) {
   foreach($book_list as $book) { ?>
     <div class="book">
@@ -17,7 +21,7 @@ if($book_list) {
   <?php } 
 }
 else { ?>
-<p>The library is empty!</p>
+<p>You have no books!</p>
 <?php } ?>
 
 </div>

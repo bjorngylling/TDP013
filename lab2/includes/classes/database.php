@@ -1,10 +1,8 @@
 <?php
-/* includes/database.php
+/* includes/classes/database.php
    Database wrapper for mysqli 
 
 */
-
-require_once 'config.php';
 
 class Database {
   static private $instance = false;
@@ -105,6 +103,16 @@ class Database {
   
   private function query_results_to_array($statement) {
     $result = $statement->result_metadata();
+    
+    // Exit here if it's a query that returns no results
+    // If it's a insert query we return the id
+    if(!$result && $statement->insert_id) {
+      $id = $statement->insert_id;
+      $statement->free_result();
+      return $id;
+    }
+    if(!$result)
+      return true;
     
     // Create an array of references to elements in another array,
     // one for each field in the table so we can bind the results to
