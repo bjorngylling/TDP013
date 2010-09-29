@@ -31,6 +31,7 @@
           else { ?>
             <ul>
     	        <li><a href="index.php">All books</a> &bull; </li>
+    	        <li><a href="search.php">Search</a> &bull; </li>
     	        <li><a href="sign_up.php">Sign up</a> &bull; </li>
               <li><a href="sign_in.php">Sign in</a></li>
             </ul>

@@ -62,18 +62,29 @@ class Book {
     return $result;
   }
   
+  public static function search($search_string) {
+    $search_string = '%' . $search_string . '%';
+    $result = Database::get_instance()->query( 
+        "SELECT title, author, isbn
+         FROM books
+         WHERE title LIKE ?
+         OR author LIKE ?
+         OR isbn LIKE ?
+         ORDER BY id DESC",
+         array($search_string, $search_string, $search_string));
+         
+    return $result;
+  }
+  
   private function load_book($id) {
-    var_dump($id);
     $book_data = Database::get_instance()->query(
       "SELECT title, author, isbn 
        FROM books 
        WHERE id = ?", 
       array($id));
-    var_dump($book_data);
     $this->id = $id;
     $this->title = $book_data[0]['title'];
     $this->author = $book_data[0]['author'];
     $this->isbn = $book_data[0]['isbn'];
-    var_dump($this);
   }
 }
