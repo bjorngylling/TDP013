@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+body {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:75%;
+}
+
+#content {
+  width:500px;
+  margin:10em auto 0;
+  padding:0.1em 2em 0.5em;
+  background-color:#ccc;
+}
+
+#submit_button {
+  width:6em;
+  height:3em;
+}
+
+#reset_button {
+  width:6em;
+}
+
+.shadow {
+  -moz-box-shadow: 3px 3px 4px #aaa;
+	-webkit-box-shadow: 3px 3px 4px #aaa;
+}
+
+label {
+  display:block;
+}
+
+.error {
+  color:#aa0000;
+}

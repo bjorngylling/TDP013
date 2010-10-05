@@ -3,6 +3,8 @@ include('includes/bootstrap.php');
 
 $result_list = Book::search($_GET['search_string']);
 
+var_dump($result_list);
+
 if($result_list) {
 foreach($result_list as $book) { ?>
     <div class="book">
