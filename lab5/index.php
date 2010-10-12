@@ -52,6 +52,20 @@
         Latitude: <?php echo $lat; ?><br />
         Longitude: <?php echo $lng; ?>
       </p>
+      
+      <?php 
+        $url = 'http://local.yahooapis.com/MapsService/V1/mapImage?appid=YD-4g6HBf0_JX0yq2IsdnV1Ne9JTpKxQ3Miew--&latitude=' . urlencode($lat) . '&longitude=' . urlencode($lng);
+        
+        $result = file_get_contents($url);
+        
+        $xml = new SimpleXMLElement($result);
+        $result = $xml->xpath('/Result');
+        
+        while(list( , $node) = each($result)) {
+          $img = $node;
+        }
+      ?>
+      <br /><img src="<?php echo $img ?>" /><br /><br /><br /><br />
       <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo $lat . "," . $lng; ?>&amp;zoom=14&amp;size=600x700&amp;sensor=false" />
     </div>
   </body>
